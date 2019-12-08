@@ -43,10 +43,11 @@ public class SDLSample : Object {
         SDL.WindowManager.set_caption("NBodySimulation", "");
         
         for(int i=0; i < pts; i++) {
-			/*px[i] = 1 - rand.next_double() *2;
+	    /* for random generation
+	    px[i] = 1 - rand.next_double() *2;
             py[i] = 1 - rand.next_double() *2;*/
-			
-			double a = Math.PI * 2 / pts * i;
+	    
+	    double a = Math.PI * 2 / pts * i;
             px[i] = Math.cos(a);
             py[i] = Math.sin(a);
                 
@@ -57,19 +58,22 @@ public class SDLSample : Object {
         }
 
         while (process_events()) {
-			computation();
+	    computation();
             draw ();
             SDL.Timer.delay (DELAY);
         }
     }
     
     private void computation(){
-		for(int i=0; i < pts; i++) {
-			double ax = 0;
+        for(int i=0; i < pts; i++) {
+	    double ax = 0;
             double ay = 0;
 
             for (int j = 0; j < pts; j++) {
-				if (i == j) continue;
+		if (i == j){
+		    continue;
+		}
+		
                 double dx = px[j] - px[i];
                 double dy = py[j] - py[i];
                 double dsq = dx * dx + dy * dy;
@@ -86,15 +90,14 @@ public class SDLSample : Object {
             sy[i] = ay;
         }
         for (int i = 0; i < pts; i++) {
-			vx[i] += sx[i] / m[i] + dt;
+	    vx[i] += sx[i] / m[i] + dt;
             vy[i] += sy[i] / m[i] + dt;
 
             px[i] += vx[i] * dt;
             py[i] += vy[i] * dt;
         }
-	}
-	
-
+    }
+    
     private void draw () {
         screen.fill(null, 0);
         
@@ -102,10 +105,10 @@ public class SDLSample : Object {
         double cy = screen.h * 0.5;
 
         double scl = Math.fmin(cx, cy) * 0.85;
-        double r = 1.5;
+        double r = 1.5; //radius
 
         for (int i=0; i < pts; i++) {
-			double x = cx - px[i] * scl;
+	    double x = cx - px[i] * scl;
             double y = cy - py[i] * scl;
             
             Ellipse.fill_rgba(this.screen, (int16)(x - r), (int16)(y - r), (int16)(2 * r), (int16)(2 * r), 50, 50, 100, 100);
@@ -119,7 +122,7 @@ public class SDLSample : Object {
         while (Event.poll (out event) == 1) {
             if (event.type == EventType.QUIT){
                 return false;
-			}
+	    }
         }
         return true;
     }
