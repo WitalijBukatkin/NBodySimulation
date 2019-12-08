@@ -8,5 +8,5 @@ Recovery old project in Vala
 - SDL-gfx
 
 ## Run
-`make
-./nbodysimulation`
+`make'
+'./nbodysimulation`
