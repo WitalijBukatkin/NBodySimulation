@@ -2,7 +2,7 @@
 Recovery old project in Vala
 
 ## Uses
-- Vala
+- Valac
 - GLib
 - SDL
 - SDL-gfx
