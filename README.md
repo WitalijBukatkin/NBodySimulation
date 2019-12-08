@@ -9,4 +9,5 @@ Recovery old project in Vala
 
 ## Run
 `make`
+
 `./nbodysimulation`
