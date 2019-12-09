@@ -1,11 +1,11 @@
 using Gtk;
 
 public class Main : Gtk.Window{
-	private Entry widthEntry = new Entry();
-	private Entry heightEntry = new Entry();
-	private Entry dotsCountEntry = new Entry();
-	private Entry dotsSizeEntry = new Entry();
-	private ColorButton colorButton = new ColorButton();
+	private Entry width_entry = new Entry();
+	private Entry height_entry = new Entry();
+	private Entry dots_count_entry = new Entry();
+	private Entry dots_size_entry = new Entry();
+	private ColorButton color_button = new ColorButton();
 	private CheckButton circle_generation_button = new CheckButton.with_label("Circle generation");
 
 	public Main(){
@@ -16,27 +16,27 @@ public class Main : Gtk.Window{
 		this.border_width = 10;
 		this.destroy.connect(Gtk.main_quit);
 		
-		widthEntry.set_text("1280");
-		widthEntry.set_placeholder_text("width");
+		width_entry.set_text("1280");
+		width_entry.set_placeholder_text("width");
 
-		heightEntry.set_text("800");
-		heightEntry.set_placeholder_text("height");
+		height_entry.set_text("800");
+		height_entry.set_placeholder_text("height");
 
-		dotsCountEntry.set_text("700");
-		dotsCountEntry.set_placeholder_text("count");
+		dots_count_entry.set_text("700");
+		dots_count_entry.set_placeholder_text("count");
 
-		dotsSizeEntry.set_text("1.5");
-		dotsSizeEntry.set_placeholder_text("size");
+		dots_size_entry.set_text("1.5");
+		dots_size_entry.set_placeholder_text("size");
 
 		Gdk.RGBA rgba = Gdk.RGBA();
 		rgba.red = 0.203922;
 		rgba.green = 0.396078;
 		rgba.blue = 0.643137;
 		rgba.alpha = 1.0;
-		colorButton.set_rgba(rgba);
+		color_button.set_rgba(rgba);
 
-		Button showButton = new Button.with_label("Show");
-		showButton.clicked.connect(show_button_clicked);
+		Button show_button = new Button.with_label("Show");
+		show_button.clicked.connect(show_button_clicked);
 
 		Grid grid = new Grid();
 		grid.set_row_spacing(20);
@@ -44,36 +44,36 @@ public class Main : Gtk.Window{
 		this.add(grid);
 		
 		grid.attach(new Label("Resolution"), 0, 0, 1, 1);
-		grid.attach(widthEntry, 1, 0, 1, 1);
+		grid.attach(width_entry, 1, 0, 1, 1);
 		grid.attach(new Label("X"), 2, 0, 1, 1);
-		grid.attach(heightEntry, 3, 0, 1, 1);
+		grid.attach(height_entry, 3, 0, 1, 1);
 
 		grid.attach(new Label("Dots count"), 0, 1, 1, 1);
-		grid.attach(dotsCountEntry, 1, 1, 1, 1);
+		grid.attach(dots_count_entry, 1, 1, 1, 1);
 
 		grid.attach(new Label("Dot size"), 0, 2, 1, 1);
-		grid.attach(dotsSizeEntry, 1, 2, 1, 1);
+		grid.attach(dots_size_entry, 1, 2, 1, 1);
 
 		grid.attach(new Label("Color"), 0, 3, 1, 1);
-		grid.attach(colorButton, 1, 3, 1, 1);
+		grid.attach(color_button, 1, 3, 1, 1);
 
 		grid.attach(circle_generation_button, 3, 2, 1, 1);
 
-		grid.attach(showButton, 3, 3, 1, 1);
+		grid.attach(show_button, 3, 3, 1, 1);
 	}
 
 	private void show_button_clicked(){
-		int width = int.parse(widthEntry.get_text());
-		int height = int.parse(heightEntry.get_text());
-		int dotsCount = int.parse(dotsCountEntry.get_text());
-		double dotsSize = double.parse(dotsSizeEntry.get_text());
+		int width = int.parse(width_entry.get_text());
+		int height = int.parse(height_entry.get_text());
+		int dotsCount = int.parse(dots_count_entry.get_text());
+		double dotsSize = double.parse(dots_size_entry.get_text());
 
 		width=width==0?1280:width;
 		height=height==0?800:height;
 		dotsCount=dotsCount==0?700:dotsCount;
 		dotsSize=dotsSize==0?1.5:dotsSize;
 
-		Gdk.RGBA rgba = colorButton.get_rgba();
+		Gdk.RGBA rgba = color_button.get_rgba();
 		
 		new SDLWindow(width, height, dotsCount, dotsSize, circle_generation_button.get_active(),
 			(uchar)(rgba.red*255), (uchar)(rgba.green*255), (uchar)(rgba.blue*255), (uchar)(rgba.alpha*255)).run();
