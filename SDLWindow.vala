@@ -1,5 +1,4 @@
 using SDL;
-using SDLGraphics;
 
 public class SDLWindow {
 	private NBodySimulation nBodySimulation;
