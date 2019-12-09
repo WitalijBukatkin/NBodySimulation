@@ -21,17 +21,17 @@ public class NBodySimulation{
     private double eps = 10;
     private double dt = 0.000001;
 
-	private double dotSize;
+	private double dot_size;
 
 	private uchar r;
 	private uchar g;
 	private uchar b;
 	private uchar a;
 
-    public NBodySimulation (SDL.Screen screen, int dotsCount, double dotSize, bool circleGeneration, uchar r, uchar g, uchar b, uchar a) {
+    public NBodySimulation (SDL.Screen screen, int dots_count, double dot_size, bool circleGeneration, uchar r, uchar g, uchar b, uchar a) {
 		this.screen = screen;
-		this.pts = dotsCount;
-		this.dotSize = dotSize;
+		this.pts = dots_count;
+		this.dot_size = dot_size;
 
 		this.r = r;
 		this.g = g;
@@ -111,7 +111,7 @@ public class NBodySimulation{
         double cy = screen.h * 0.5;
 
         double scl = Math.fmin(cx, cy) * 0.85;
-        double rad = dotSize;
+        double rad = dot_size;
 
         for (int i=0; i < pts; i++) {
 	    	double x = cx - px[i] * scl;
