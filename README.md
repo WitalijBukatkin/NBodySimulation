@@ -7,8 +7,7 @@ Recovery old project in Vala
 - Gtk+-3.0
 - SDL and SDL-gfx
 
-## Install dependencies
-### Ubuntu
+## Install dependencies on Ubuntu
 `sudo apt install libsdl2-dev libsdl-gfx1.2-dev`
 
 ## Compile
