@@ -2,13 +2,20 @@
 Recovery old project in Vala
 
 ## Uses
+- Meson and Ninja
 - Valac
 - Gtk+-3.0
-- GLib
-- SDL
-- SDL-gfx
+- SDL and SDL-gfx
+
+## Install dependencies
+### Ubuntu
+`sudo apt install libsdl2-dev libsdl-gfx1.2-dev`
+
+## Compile
+` meson build &&
+  cd build &&
+  ninja
+`
 
 ## Run
-`make`
-
 `./nbodysimulation`
