@@ -8,7 +8,7 @@ Recovery old project in Vala
 - SDL and SDL-gfx
 
 ## Install dependencies on Ubuntu
-`sudo apt install libsdl2-dev libsdl-gfx1.2-dev`
+`sudo apt install valac meson ninja libsdl-gfx1.2-dev libgtk-3-dev`
 
 ## Compile
 ` meson build &&
